@@ -243,7 +243,7 @@ if (chatFab) chatFab.addEventListener('click', () => showPage('agent'));
     [10.7, 49], [11, 50],
   ];
 
-  const W = 1000, H = 234, VMIN = 30, VMAX = 70;
+  const W = 1000, H = 234, VMIN = 0, VMAX = 70;
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   const mx2x = mx => (mx / 11) * W;
   const v2y = v => ((VMAX - v) / (VMAX - VMIN)) * H;

@@ -420,7 +420,10 @@ html, body {
   background: #fcfdfd;
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 14px 39px 30px;
+  padding: 14px 39px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .gridlines {
   position: absolute;

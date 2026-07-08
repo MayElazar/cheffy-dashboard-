@@ -31,7 +31,6 @@ svg.icon path, svg.icon rect { transition: fill .15s ease, stroke .15s ease; }
 }
 
 html, body {
-  height: 100%;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: #ffffff;
   color: var(--text-dark);
@@ -52,7 +51,10 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  min-height: 100vh;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
   border-right: 1px solid var(--border, #e1e1eb);
 }
 
@@ -1718,7 +1720,10 @@ input:indeterminate + .checkbox-box::after {
   background: #f3f3f7;
   color: var(--text-dark);
   border-bottom-left-radius: 4px;
+  font-size: 15px;
+  line-height: 1.6;
 }
+.ai-bubble strong { font-weight: 700; }
 .ai-bubble.typing {
   display: flex;
   gap: 4px;

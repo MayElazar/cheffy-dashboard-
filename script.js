@@ -556,14 +556,9 @@ if (chatFab) chatFab.addEventListener('click', () => showPage('agent'));
 // ============ Revenue: insight follow-ups -> Agent chat ============
 document.querySelectorAll('.rev-insight').forEach(btn => {
   btn.addEventListener('click', () => {
-    const question = btn.dataset.followup;
     showPage('agent');
-    const field = document.getElementById('agentField');
-    const form = document.getElementById('agentForm');
-    if (field && form) {
-      field.value = question;
-      form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
-    }
+    const chat = document.getElementById('agentChat');
+    if (chat) setTimeout(() => chat.scrollTop = chat.scrollHeight, 50);
   });
 });
 
@@ -1030,7 +1025,7 @@ const CRYSTAL_MINT_REVENUE_CHART = () => buildChatChart({
       let reply, chartHtml = null;
 
       if (/crystal mint|cocktail|mint/.test(lower)) {
-        reply = "Crystal Mint Cocktail orders dropped sharply in June and hit zero for the last 3 months — July through September. This isn't seasonal; other drinks held steady. The likely causes: it was removed from the specials board in June, and a pricing change made it the most expensive cocktail without a corresponding perceived value. Revenue contribution has gone from ~$1,140/mo in Q1 to $0. Recommendation: remove it from the menu and reallocate the ingredient cost toward higher-margin cocktails.";
+        reply = "Crystal Mint Cocktail orders dropped sharply in June and <strong>hit zero for the last 3 months</strong> — July through September. This isn't seasonal; other drinks held steady. The likely causes: it was removed from the specials board in June, and a pricing change made it the most expensive cocktail without a corresponding perceived value. Revenue contribution has gone from ~$1,140/mo in Q1 to <strong>$0</strong>. <strong>Recommendation: remove it from the menu</strong> and reallocate the ingredient cost toward higher-margin cocktails.";
         chartHtml = [CRYSTAL_MINT_ORDERS_CHART(), CRYSTAL_MINT_REVENUE_CHART()];
       } else if (/channel|breakdown|chart|graph|visual/.test(lower)) {
         reply = "Here's the breakdown by channel — in-house dining leads, with online close behind.";
@@ -1051,7 +1046,7 @@ const CRYSTAL_MINT_REVENUE_CHART = () => buildChatChart({
       }
 
       typingRow.querySelector('.ai-bubble').classList.remove('typing');
-      typingRow.querySelector('.ai-bubble').textContent = reply;
+      typingRow.querySelector('.ai-bubble').innerHTML = reply;
 
       if (chartHtml) {
         const bubble = typingRow.querySelector('.ai-bubble');
